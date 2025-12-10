@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>seven.seven • E-books</title>
 
-    <!-- Fontes mais amigáveis -->
+    <!-- Fontes amigáveis -->
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
     <style>
@@ -13,10 +13,17 @@
             --bg: #070219;
             --bg-soft: rgba(15, 7, 40, 0.8);
             --glass: rgba(26, 11, 70, 0.55);
-            --glass-strong: rgba(35, 12, 90, 0.85);
-            --accent-day: #ffd45a;   /* sol */
-            --accent-night: #7cc7ff; /* lua */
-            --accent-mix: #b27dff;   /* roxo glow */
+            --glass-strong: rgba(35, 12, 90, 0.9);
+
+            --accent-day: #ffd45a;      /* sol */
+            --accent-night: #7cc7ff;    /* lua */
+            --accent-mix: #b27dff;      /* roxo glow */
+
+            --cat-informatica: #7cc7ff;
+            --cat-financas:   #7dffb2;
+            --cat-culinaria:  #ffb36b;
+            --cat-desenvolv:  #d67dff;
+
             --text: #f9f6ff;
             --muted: #c3bde6;
             --border: rgba(255, 255, 255, 0.08);
@@ -42,11 +49,11 @@
         .page {
             max-width: 1120px;
             margin: 0 auto;
-            padding: 2.5rem 1.4rem 3.2rem;
+            padding: 2.4rem 1.4rem 3.2rem;
             position: relative;
         }
 
-        /* Formas geométricas de fundo */
+        /* FORMAS DE FUNDO */
         .shape {
             position: fixed;
             pointer-events: none;
@@ -68,7 +75,7 @@
             width: 260px;
             height: 260px;
             background: radial-gradient(circle, #7f5bff, transparent 65%);
-            top: 20%;
+            top: 18%;
             right: -60px;
         }
 
@@ -91,6 +98,7 @@
             transform: rotate(18deg);
         }
 
+        /* HEADER */
         header {
             display: flex;
             align-items: center;
@@ -106,8 +114,8 @@
         }
 
         .logo-badge {
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             border-radius: 1.4rem;
             background: radial-gradient(circle at 30% 0, #ffe27a 0, #ff9b40 40%, #ff6d6d 100%);
             box-shadow: 0 0 0 2px rgba(7, 2, 25, 0.9), 0 14px 30px rgba(0, 0, 0, 0.6);
@@ -115,13 +123,13 @@
             align-items: center;
             justify-content: center;
             font-family: "Baloo 2", cursive;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: #3b1030;
         }
 
         .logo-title {
             font-family: "Baloo 2", cursive;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             line-height: 1.1;
         }
 
@@ -145,15 +153,13 @@
             gap: 2rem;
         }
 
-        /* HERO */
+        /* HERO À ESQUERDA */
         .hero {
-            border-radius: 1.8rem;
-            padding: 1.7rem 1.5rem;
-            background: linear-gradient(
-                    135deg,
-                    rgba(255, 255, 255, 0.03),
-                    rgba(178, 125, 255, 0.12)
-                ),
+            border-radius: 1.9rem;
+            padding: 1.8rem 1.6rem;
+            background:
+                radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 55%),
+                radial-gradient(circle at bottom right, rgba(178, 125, 255, 0.2), transparent 60%),
                 var(--glass);
             border: 1px solid var(--border);
             box-shadow: 0 26px 60px rgba(0, 0, 0, 0.6);
@@ -161,18 +167,21 @@
         }
 
         .hero-kicker {
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
+            font-size: 0.78rem;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--muted);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.55rem;
         }
 
         .hero-title {
             font-family: "Baloo 2", cursive;
-            font-size: clamp(1.7rem, 3vw, 2.2rem);
-            line-height: 1.1;
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.9rem, 3.2vw, 2.4rem);
+            line-height: 1.05;
+            margin-bottom: 0.55rem;
+            text-shadow:
+                0 0 8px rgba(255, 212, 90, 0.7),
+                0 0 18px rgba(178, 125, 255, 0.6);
         }
 
         .hero-title span {
@@ -182,13 +191,13 @@
         }
 
         .hero-sub {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: var(--muted);
             max-width: 360px;
         }
 
         .hero-actions {
-            margin: 1.1rem 0 0.7rem;
+            margin: 1.15rem 0 0.8rem;
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
@@ -197,27 +206,27 @@
         .btn-main {
             border-radius: 999px;
             border: none;
-            padding: 0.6rem 1.5rem;
+            padding: 0.7rem 1.8rem;
             background: linear-gradient(135deg, #ffd45a, #ff9d73);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 700;
             font-family: "Baloo 2", cursive;
             color: #4a1f29;
             cursor: pointer;
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 18px 38px rgba(0, 0, 0, 0.7);
             transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
         }
 
         .btn-main:hover {
-            transform: translateY(-1px);
-            filter: brightness(1.05);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+            transform: translateY(-2px);
+            filter: brightness(1.06);
+            box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85);
         }
 
         .btn-ghost {
             border-radius: 999px;
             border: 1px solid var(--border);
-            padding: 0.55rem 1.3rem;
+            padding: 0.6rem 1.4rem;
             background: rgba(10, 5, 45, 0.9);
             font-size: 0.85rem;
             color: var(--muted);
@@ -237,81 +246,67 @@
             border-color: var(--accent-mix);
             color: var(--text);
             background: rgba(26, 8, 74, 0.95);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
         .hero-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.45rem;
-            margin-top: 0.5rem;
+            margin-top: 0.55rem;
             font-size: 0.75rem;
         }
 
         .tag {
-            padding: 0.25rem 0.7rem;
+            padding: 0.25rem 0.85rem;
             border-radius: 999px;
             background: rgba(12, 5, 38, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--muted);
         }
 
-        /* LADO DIREITO – PERSONAGENS */
+        /* HERO DIREITA COM PERSONAGENS */
         .hero-characters {
-            border-radius: 1.8rem;
-            padding: 1.4rem 1.3rem;
-            background: linear-gradient(
-                    145deg,
-                    rgba(124, 199, 255, 0.14),
-                    rgba(255, 212, 90, 0.08)
-                ),
+            border-radius: 1.9rem;
+            padding: 1.5rem 1.4rem;
+            background:
+                radial-gradient(circle at 10% 0, rgba(255, 212, 90, 0.32), transparent 55%),
+                radial-gradient(circle at 90% 10%, rgba(124, 199, 255, 0.3), transparent 60%),
                 var(--glass-strong);
             border: 1px solid var(--border);
-            box-shadow: 0 24px 55px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 26px 55px rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(18px);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 1rem;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero-characters::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 20% 20%, rgba(255, 212, 90, 0.28), transparent 55%),
-                radial-gradient(circle at 80% 30%, rgba(124, 199, 255, 0.3), transparent 60%);
-            mix-blend-mode: screen;
-            opacity: 0.9;
-            pointer-events: none;
         }
 
         .hero-characters-inner {
             position: relative;
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            gap: 1.4rem;
         }
 
         .hero-characters img {
-            width: 170px;
+            width: 180px;
             max-width: 100%;
-            border-radius: 1.5rem;
+            border-radius: 1.6rem;
             display: block;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
         }
 
         .hero-characters-text {
-            font-size: 0.83rem;
+            font-size: 0.85rem;
             color: var(--muted);
         }
 
         .hero-characters-title {
             font-family: "Baloo 2", cursive;
-            font-size: 1rem;
+            font-size: 1.05rem;
             margin-bottom: 0.3rem;
+            text-shadow:
+                0 0 10px rgba(255, 212, 90, 0.7),
+                0 0 14px rgba(124, 199, 255, 0.6);
         }
 
         .hero-chips {
@@ -321,40 +316,79 @@
             margin-top: 0.4rem;
         }
 
-        .chip-day {
+        .chip-day,
+        .chip-night {
             padding: 0.25rem 0.7rem;
             border-radius: 999px;
-            background: rgba(255, 212, 90, 0.12);
-            border: 1px solid rgba(255, 212, 90, 0.55);
             font-size: 0.73rem;
+        }
+
+        .chip-day {
+            background: rgba(255, 212, 90, 0.14);
+            border: 1px solid rgba(255, 212, 90, 0.7);
             color: #ffeaa0;
         }
 
         .chip-night {
-            padding: 0.25rem 0.7rem;
-            border-radius: 999px;
-            background: rgba(124, 199, 255, 0.12);
-            border: 1px solid rgba(124, 199, 255, 0.55);
-            font-size: 0.73rem;
+            background: rgba(124, 199, 255, 0.14);
+            border: 1px solid rgba(124, 199, 255, 0.7);
             color: #d7f0ff;
         }
 
-        /* CATALOGO */
+        /* DIVISOR SOL / LUA */
+        .divider {
+            margin: 2.4rem 0 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 212, 90, 0.1),
+                rgba(178, 125, 255, 0.7),
+                rgba(124, 199, 255, 0.1)
+            );
+        }
+
+        .divider-icon {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 1.1rem;
+        }
+
+        .divider-icon span.text {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--muted);
+        }
+
+        /* CATALOGO – TÍTULO & FILTROS */
         .section-header {
-            margin: 2.4rem 0 1.1rem;
+            margin-bottom: 1.2rem;
             display: flex;
             justify-content: space-between;
             gap: 1rem;
             align-items: flex-end;
         }
 
-        .section-header h2 {
+        .section-title {
             font-family: "Baloo 2", cursive;
-            font-size: 1.25rem;
+            font-size: 1.35rem;
+            text-shadow:
+                0 0 10px rgba(178, 125, 255, 0.6),
+                0 0 18px rgba(124, 199, 255, 0.4);
         }
 
-        .section-header p {
-            font-size: 0.78rem;
+        .section-sub {
+            font-size: 0.8rem;
             color: var(--muted);
         }
 
@@ -366,11 +400,11 @@
         }
 
         .filter-btn {
-            padding: 0.35rem 0.9rem;
+            padding: 0.38rem 0.95rem;
             border-radius: 999px;
             border: 1px solid var(--border);
             background: rgba(11, 4, 38, 0.9);
-            font-size: 0.75rem;
+            font-size: 0.76rem;
             color: var(--muted);
             cursor: pointer;
             transition: all 0.12s ease;
@@ -380,25 +414,80 @@
             background: linear-gradient(135deg, #ffd45a, #7cc7ff);
             color: #381228;
             border-color: transparent;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        /* BANDAS DE CATEGORIA */
+        .category-band {
+            margin-top: 1.6rem;
+            margin-bottom: 0.7rem;
+            border-radius: 1.1rem;
+            padding: 0.65rem 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            font-size: 0.86rem;
+            font-weight: 600;
+        }
+
+        .category-band span.icon {
+            font-size: 1.1rem;
+        }
+
+        .band-informatica {
+            background: linear-gradient(135deg, rgba(124, 199, 255, 0.18), rgba(33, 139, 255, 0.14));
+            border-left: 3px solid var(--cat-informatica);
+        }
+
+        .band-financas {
+            background: linear-gradient(135deg, rgba(125, 255, 178, 0.18), rgba(46, 179, 123, 0.14));
+            border-left: 3px solid var(--cat-financas);
+        }
+
+        .band-culinaria {
+            background: linear-gradient(135deg, rgba(255, 179, 107, 0.18), rgba(255, 140, 94, 0.14));
+            border-left: 3px solid var(--cat-culinaria);
+        }
+
+        .band-desenvolv {
+            background: linear-gradient(135deg, rgba(214, 125, 255, 0.18), rgba(156, 94, 238, 0.14));
+            border-left: 3px solid var(--cat-desenvolv);
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+            gap: 1.1rem;
         }
 
+        /* CARDS DE E-BOOK */
         .card {
             border-radius: 1.4rem;
             padding: 1rem;
-            background: rgba(20, 7, 63, 0.82);
+            background: rgba(20, 7, 63, 0.9);
             border: 1px solid var(--border);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 42px rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(14px);
             display: flex;
             flex-direction: column;
-            gap: 0.4rem;
-            min-height: 180px;
+            gap: 0.45rem;
+            min-height: 190px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.16;
+            background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.15), transparent 60%);
+            pointer-events: none;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
         }
 
         .card-top-row {
@@ -406,12 +495,13 @@
             justify-content: space-between;
             align-items: center;
             font-size: 0.78rem;
+            margin-bottom: 0.2rem;
         }
 
         .card-pill {
             padding: 0.2rem 0.7rem;
             border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             background: rgba(255, 255, 255, 0.03);
         }
 
@@ -422,16 +512,17 @@
 
         .card-title {
             font-family: "Baloo 2", cursive;
-            font-size: 0.96rem;
+            font-size: 1rem;
+            text-shadow: 0 0 9px rgba(178, 125, 255, 0.5);
         }
 
         .card-desc {
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             color: var(--muted);
         }
 
         .card-bottom-row {
-            margin-top: 0.4rem;
+            margin-top: 0.45rem;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
@@ -439,12 +530,12 @@
         }
 
         .price {
-            font-size: 1rem;
+            font-size: 1.02rem;
             font-weight: 700;
         }
 
         .price small {
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             color: var(--muted);
             font-weight: 400;
             margin-left: 0.2rem;
@@ -453,39 +544,40 @@
         .btn-card {
             border-radius: 999px;
             border: none;
-            padding: 0.45rem 1.1rem;
+            padding: 0.5rem 1.15rem;
             background: linear-gradient(135deg, #ffd45a, #ff9d73);
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 700;
             font-family: "Baloo 2", cursive;
             color: #4a1f29;
             cursor: pointer;
             white-space: nowrap;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
             transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
         }
 
         .btn-card:hover {
             transform: translateY(-1px);
-            filter: brightness(1.03);
-            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.75);
+            filter: brightness(1.04);
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.8);
         }
 
-        /* FAQ ENXUTO */
+        /* FAQ */
         #faq {
             margin-top: 2.4rem;
         }
 
         #faq .grid {
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
         }
 
         #faq .card {
             min-height: 0;
         }
 
+        /* FOOTER */
         footer {
-            margin-top: 2.2rem;
+            margin-top: 2.4rem;
             padding-top: 1.2rem;
             border-top: 1px solid var(--border);
             font-size: 0.75rem;
@@ -502,11 +594,11 @@
             font-size: 0.75rem;
         }
 
-        @media (max-width: 840px) {
+        /* RESPONSIVO */
+        @media (max-width: 880px) {
             main {
                 grid-template-columns: minmax(0, 1fr);
             }
-
             .hero-characters {
                 order: -1;
             }
@@ -517,18 +609,15 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-
+            .page {
+                padding-top: 2rem;
+            }
             .section-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
             .filter-group {
                 justify-content: flex-start;
-            }
-
-            .page {
-                padding-top: 2rem;
             }
         }
     </style>
@@ -537,8 +626,8 @@
     <!-- Formas geométricas -->
     <div class="shape circle1"></div>
     <div class="shape circle2"></div>
-    <div class="shape circle3"></div>
-    <div class="shape square"></div>
+    <div class="shape circle3"></div
+    ><div class="shape square"></div>
 
     <div class="page">
         <header>
@@ -554,12 +643,12 @@
 
         <main>
             <section class="hero">
-                <div class="hero-kicker">Coleção digital</div>
+                <div class="hero-kicker">coleção digital</div>
                 <h1 class="hero-title">
                     E-books fofos, práticos e <span>direto ao ponto</span>.
                 </h1>
                 <p class="hero-sub">
-                    Escolha uma categoria, veja o valor na hora e baixe assim que o pagamento for aprovado.
+                    Categorias bem separadas, valores claros e download imediato.
                 </p>
 
                 <div class="hero-actions">
@@ -580,12 +669,12 @@
 
             <section class="hero-characters">
                 <div class="hero-characters-inner">
-                    <!-- Troque o src pelo caminho da sua imagem no repositório -->
                     <img src="personagens.png" alt="Personagens sol e lua seven.seven" />
                     <div class="hero-characters-text">
                         <div class="hero-characters-title">Dia & noite com você</div>
                         <p>
-                            Seus novos guias para estudar, organizar a rotina e cozinhar sem estresse.
+                            Sol para agir, lua para focar. Seus guias para estudar, organizar a rotina
+                            e cozinhar sem estresse.
                         </p>
                         <div class="hero-chips">
                             <span class="chip-day">☀️ Sol: energia e ação</span>
@@ -596,12 +685,21 @@
             </section>
         </main>
 
+        <!-- DIVISOR -->
+        <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-icon">
+                ☀️ 🌙 <span class="text">catálogo por categoria</span>
+            </div>
+            <div class="divider-line"></div>
+        </div>
+
         <!-- CATALOGO -->
         <section id="catalogo">
             <div class="section-header">
                 <div>
-                    <h2>Catálogo por categoria</h2>
-                    <p>Passeie pelas categorias ou veja tudo de uma vez.</p>
+                    <div class="section-title">Escolha sua vibe de hoje</div>
+                    <p class="section-sub">Use o filtro ou role e veja cada categoria com uma cor diferente.</p>
                 </div>
                 <div class="filter-group">
                     <button class="filter-btn active" data-filter="all">Todos</button>
@@ -612,175 +710,228 @@
                 </div>
             </div>
 
+            <!-- BANDA INFORMÁTICA -->
+            <div class="category-band band-informatica" data-band="informatica">
+                <span class="icon">💻</span>
+                <span>Informática & produtividade – para quem quer dominar o básico e ganhar tempo.</span>
+            </div>
             <div class="grid">
-                <!-- INFORMÁTICA -->
                 <article class="card" data-category="informatica">
-                    <div class="card-top-row">
-                        <span class="card-pill">Informática básica</span>
-                        <span class="card-cat">Computador & internet</span>
-                    </div>
-                    <h3 class="card-title">Informática Essencial</h3>
-                    <p class="card-desc">
-                        Atalhos, organização e segurança para o dia a dia.
-                    </p>
-                    <div class="card-bottom-row">
-                        <div class="price">R$ 14,90 <small>PDF rápido</small></div>
-                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_INFORMATICA')">
-                            Quero esse
-                        </button>
+                    <div class="card-content">
+                        <div class="card-top-row">
+                            <span class="card-pill">Informática básica</span>
+                            <span class="card-cat">Computador & internet</span>
+                        </div>
+                        <h3 class="card-title">Informática Essencial</h3>
+                        <p class="card-desc">
+                            Atalhos, organização e segurança para o dia a dia.
+                        </p>
+                        <div class="card-bottom-row">
+                            <div class="price">R$ 14,90 <small>PDF rápido</small></div>
+                            <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_INFORMATICA')">
+                                Quero esse
+                            </button>
+                        </div>
                     </div>
                 </article>
 
                 <article class="card" data-category="informatica">
-                    <div class="card-top-row">
-                        <span class="card-pill">Excel</span>
-                        <span class="card-cat">Planilhas simples</span>
-                    </div>
-                    <h3 class="card-title">Excel Descomplicado</h3>
-                    <p class="card-desc">
-                        Fórmulas básicas e exemplos prontos para usar.
-                    </p>
-                    <div class="card-bottom-row">
-                        <div class="price">R$ 19,90 <small>+ modelos</small></div>
-                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_EXCEL')">
-                            Ver detalhes
-                        </button>
+                    <div class="card-content">
+                        <div class="card-top-row">
+                            <span class="card-pill">Excel</span>
+                            <span class="card-cat">Planilhas simples</span>
+                        </div>
+                        <h3 class="card-title">Excel Descomplicado</h3>
+                        <p class="card-desc">
+                            Fórmulas básicas e exemplos prontos para usar.
+                        </p>
+                        <div class="card-bottom-row">
+                            <div class="price">R$ 19,90 <small>+ modelos</small></div>
+                            <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_EXCEL')">
+                                Ver detalhes
+                            </button>
+                        </div>
                     </div>
                 </article>
+            </div>
 
-                <!-- FINANÇAS -->
+            <!-- BANDA FINANÇAS -->
+            <div class="category-band band-financas" data-band="financas">
+                <span class="icon">💸</span>
+                <span>Finanças pessoais – para não se perder mais no meio do mês.</span>
+            </div>
+            <div class="grid">
                 <article class="card" data-category="financas">
-                    <div class="card-top-row">
-                        <span class="card-pill">Finanças</span>
-                        <span class="card-cat">Controle de gastos</span>
-                    </div>
-                    <h3 class="card-title">Grana Organizada</h3>
-                    <p class="card-desc">
-                        Passo a passo simples para saber para onde o dinheiro vai.
-                    </p>
-                    <div class="card-bottom-row">
-                        <div class="price">R$ 17,90</div>
-                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_FINANCAS')">
-                            Comprar
-                        </button>
+                    <div class="card-content">
+                        <div class="card-top-row">
+                            <span class="card-pill">Finanças</span>
+                            <span class="card-cat">Controle de gastos</span>
+                        </div>
+                        <h3 class="card-title">Grana Organizada</h3>
+                        <p class="card-desc">
+                            Passo a passo simples para saber para onde o dinheiro vai.
+                        </p>
+                        <div class="card-bottom-row">
+                            <div class="price">R$ 17,90</div>
+                            <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_FINANCAS')">
+                                Comprar
+                            </button>
+                        </div>
                     </div>
                 </article>
 
                 <article class="card" data-category="financas">
-                    <div class="card-top-row">
-                        <span class="card-pill">Renda extra</span>
-                        <span class="card-cat">Internet</span>
-                    </div>
-                    <h3 class="card-title">Primeiros Passos Online</h3>
-                    <p class="card-desc">
-                        Ideias reais de renda pela internet para começar pequeno.
-                    </p>
-                    <div class="card-bottom-row">
-                        <div class="price">R$ 24,90</div>
-                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_RENDA')">
-                            Ver e-book
-                        </button>
+                    <div class="card-content">
+                        <div class="card-top-row">
+                            <span class="card-pill">Renda extra</span>
+                            <span class="card-cat">Internet</span>
+                        </div>
+                        <h3 class="card-title">Primeiros Passos Online</h3>
+                        <p class="card-desc">
+                            Ideias reais de renda pela internet para começar pequeno.
+                        </p>
+                        <div class="card-bottom-row">
+                            <div class="price">R$ 24,90</div>
+                            <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_RENDA')">
+                                Ver e-book
+                            </button>
+                        </div>
                     </div>
                 </article>
+            </div>
 
-                <!-- CULINÁRIA -->
+            <!-- BANDA CULINÁRIA -->
+            <div class="category-band band-culinaria" data-band="culinaria">
+                <span class="icon">🍰</span>
+                <span>Culinária – para quem quer comida gostosa e prática.</span>
+            </div>
+            <div class="grid">
                 <article class="card" data-category="culinaria">
-                    <div class="card-top-row">
-                        <span class="card-pill">Culinária</span>
-                        <span class="card-cat">Bolos & doces</span>
-                    </div>
-                    <h3 class="card-title">Bolos Caseiros Fáceis</h3>
-                    <p class="card-desc">
-                        Receitas simples, molhadinhas e perfeitas para vender.
-                    </p>
-                    <div class="card-bottom-row">
-                        <div class="price">R$ 12,90</div>
-                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_BOLOS')">
-                            Quero as receitas
-                        </button>
+                    <div class="card-content">
+                        <div class="card-top-row">
+                            <span class="card-pill">Culinária</span>
+                            <span class="card-cat">Bolos & doces</span>
+                        </div>
+                        <h3 class="card-title">Bolos Caseiros Fáceis</h3>
+                        <p class="card-desc">
+                            Receitas simples, molhadinhas e perfeitas para vender.
+                        </p>
+                        <div class="card-bottom-row">
+                            <div class="price">R$ 12,90</div>
+                            <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_BOLOS')">
+                                Quero as receitas
+                            </button>
+                        </div>
                     </div>
                 </article>
 
                 <article class="card" data-category="culinaria">
-                    <div class="card-top-row">
-                        <span class="card-pill">Jantar rápido</span>
-                        <span class="card-cat">Refeições</span>
+                    <div class="card-content">
+                        <div class="card-top-row">
+                            <span class="card-pill">Jantar rápido</span>
+                            <span class="card-cat">Refeições</span>
+                        </div>
+                        <h3 class="card-title">Janta em 20 Minutos</h3>
+                        <p class="card-desc">
+                            Ideias de refeições rápidas para a correria.
+                        </p>
+                        <div class="card-bottom-row">
+                            <div class="price">R$ 14,90</div>
+                            <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_JANTA')">
+                                Ver receitas
+                            </button>
+                        </div>
                     </div>
-                    <h3 class="card-title">Janta em 20 Minutos</h3>
-                    <p class="card-desc">
-                        Ideias de refeições rápidas para a correria.
-                    </p>
-                    <div class="card-bottom-row">
-                        <div class="price">R$ 14,90</div>
-                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_JANTA')">
-                            Ver receitas
-                        </button>
+                </article>
+            </div>
+
+            <!-- BANDA DESENVOLVIMENTO -->
+            <div class="category-band band-desenvolv" data-band="desenvolvimento">
+                <span class="icon">🌱</span>
+                <span>Desenvolvimento pessoal – foco, rotina e estudos.</span>
+            </div>
+            <div class="grid">
+                <article class="card" data-category="desenvolvimento">
+                    <div class="card-content">
+                        <div class="card-top-row">
+                            <span class="card-pill">Rotina</span>
+                            <span class="card-cat">Foco & organização</span>
+                        </div>
+                        <h3 class="card-title">Rotina de Foco</h3>
+                        <p class="card-desc">
+                            Um plano simples para diminuir distrações e organizar o dia.
+                        </p>
+                        <div class="card-bottom-row">
+                            <div class="price">R$ 16,90</div>
+                            <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_FOCO')">
+                                Começar hoje
+                            </button>
+                        </div>
                     </div>
                 </article>
 
-                <!-- DESENVOLVIMENTO -->
                 <article class="card" data-category="desenvolvimento">
-                    <div class="card-top-row">
-                        <span class="card-pill">Rotina</span>
-                        <span class="card-cat">Foco & organização</span>
-                    </div>
-                    <h3 class="card-title">Rotina de Foco</h3>
-                    <p class="card-desc">
-                        Um plano simples para diminuir distrações e organizar o dia.
-                    </p>
-                    <div class="card-bottom-row">
-                        <div class="price">R$ 16,90</div>
-                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_FOCO')">
-                            Começar hoje
-                        </button>
-                    </div>
-                </article>
-
-                <article class="card" data-category="desenvolvimento">
-                    <div class="card-top-row">
-                        <span class="card-pill">Estudos</span>
-                        <span class="card-cat">Concursos</span>
-                    </div>
-                    <h3 class="card-title">Estudo Simples para Concursos</h3>
-                    <p class="card-desc">
-                        Organização de revisão e questões para quem tem pouco tempo.
-                    </p>
-                    <div class="card-bottom-row">
-                        <div class="price">R$ 19,90</div>
-                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_CONCURSO')">
-                            Ver detalhes
-                        </button>
+                    <div class="card-content">
+                        <div class="card-top-row">
+                            <span class="card-pill">Estudos</span>
+                            <span class="card-cat">Concursos</span>
+                        </div>
+                        <h3 class="card-title">Estudo Simples para Concursos</h3>
+                        <p class="card-desc">
+                            Organização de revisão e questões para quem tem pouco tempo.
+                        </p>
+                        <div class="card-bottom-row">
+                            <div class="price">R$ 19,90</div>
+                            <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_CONCURSO')">
+                                Ver detalhes
+                            </button>
+                        </div>
                     </div>
                 </article>
             </div>
         </section>
 
+        <!-- DIVISOR 2 -->
+        <div class="divider" id="faq-divider">
+            <div class="divider-line"></div>
+            <div class="divider-icon">
+                🌙 ☀️ <span class="text">dúvidas rápidas</span>
+            </div>
+            <div class="divider-line"></div>
+        </div>
+
         <!-- FAQ ENXUTO -->
         <section id="faq">
             <div class="section-header">
                 <div>
-                    <h2>Dúvidas rápidas</h2>
-                    <p>Três coisas que você precisa saber antes de comprar.</p>
+                    <div class="section-title">Antes de comprar</div>
+                    <p class="section-sub">Três respostas rápidas para você se sentir seguro.</p>
                 </div>
             </div>
             <div class="grid">
                 <div class="card">
-                    <h3 class="card-title">Como recebo?</h3>
-                    <p class="card-desc">
-                        Depois do pagamento, a Kiwify libera o acesso e envia o link por e-mail.
-                    </p>
+                    <div class="card-content">
+                        <h3 class="card-title">Como recebo?</h3>
+                        <p class="card-desc">
+                            Depois do pagamento, a Kiwify libera o acesso e envia o link por e-mail automaticamente.
+                        </p>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3 class="card-title">Funciona no celular?</h3>
-                    <p class="card-desc">
-                        Sim! Todos são PDFs, é só abrir no leitor de PDF do seu aparelho.
-                    </p>
+                    <div class="card-content">
+                        <h3 class="card-title">Funciona no celular?</h3>
+                        <p class="card-desc">
+                            Sim! Todos os e-books são em PDF. É só abrir no leitor de PDF do seu aparelho.
+                        </p>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3 class="card-title">Quais formas de pagamento?</h3>
-                    <p class="card-desc">
-                        Pix, cartão de crédito e boleto, tudo processado pela Kiwify.
-                    </p>
+                    <div class="card-content">
+                        <h3 class="card-title">Quais formas de pagamento?</h3>
+                        <p class="card-desc">
+                            Pix, cartão de crédito e boleto, tudo processado de forma segura pela Kiwify.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -792,7 +943,7 @@
     </div>
 
     <script>
-        // ano no rodapé
+        // ano rodapé
         document.getElementById("year").textContent = new Date().getFullYear();
 
         function scrollToSection(id) {
@@ -804,7 +955,7 @@
             });
         }
 
-        // abrir link da Kiwify
+        // abrir link Kiwify
         function openKiwify(url) {
             if (!url || url.startsWith("LINK_KIWIFY")) {
                 alert("Defina o link da Kiwify para este e-book.");
@@ -813,19 +964,26 @@
             window.open(url, "_blank");
         }
 
-        // filtros
+        // filtros + esconder/mostrar bandas
         const filterButtons = document.querySelectorAll(".filter-btn");
         const cards = document.querySelectorAll(".card[data-category]");
+        const bands = document.querySelectorAll(".category-band");
 
         filterButtons.forEach(btn => {
             btn.addEventListener("click", () => {
                 const filter = btn.getAttribute("data-filter");
+
                 filterButtons.forEach(b => b.classList.remove("active"));
                 btn.classList.add("active");
 
                 cards.forEach(card => {
                     const cat = card.getAttribute("data-category");
                     card.style.display = (filter === "all" || filter === cat) ? "flex" : "none";
+                });
+
+                bands.forEach(band => {
+                    const cat = band.getAttribute("data-band");
+                    band.style.display = (filter === "all" || filter === cat) ? "inline-flex" : "none";
                 });
             });
         });
