@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>seven.seven • E-books</title>
+
+    <!-- Fontes mais amigáveis -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg: #070219;
+            --bg-soft: rgba(15, 7, 40, 0.8);
+            --glass: rgba(26, 11, 70, 0.55);
+            --glass-strong: rgba(35, 12, 90, 0.85);
+            --accent-day: #ffd45a;   /* sol */
+            --accent-night: #7cc7ff; /* lua */
+            --accent-mix: #b27dff;   /* roxo glow */
+            --text: #f9f6ff;
+            --muted: #c3bde6;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background:
+                radial-gradient(circle at top left, #ffbb66 0, transparent 40%),
+                radial-gradient(circle at top right, #6b5bff 0, transparent 45%),
+                radial-gradient(circle at bottom, #2b0c4f 0, #070219 55%);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.5rem 1.4rem 3.2rem;
+            position: relative;
+        }
+
+        /* Formas geométricas de fundo */
+        .shape {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+            border-radius: 999px;
+            filter: blur(18px);
+            opacity: 0.4;
+        }
+
+        .shape.circle1 {
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, #ffdd75, transparent 65%);
+            top: -40px;
+            left: -40px;
+        }
+
+        .shape.circle2 {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, #7f5bff, transparent 65%);
+            top: 20%;
+            right: -60px;
+        }
+
+        .shape.circle3 {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, #51c3ff, transparent 65%);
+            bottom: -40px;
+            left: 10%;
+        }
+
+        .shape.square {
+            width: 190px;
+            height: 190px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+            border-radius: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            top: 55%;
+            right: 6%;
+            transform: rotate(18deg);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-badge {
+            width: 42px;
+            height: 42px;
+            border-radius: 1.4rem;
+            background: radial-gradient(circle at 30% 0, #ffe27a 0, #ff9b40 40%, #ff6d6d 100%);
+            box-shadow: 0 0 0 2px rgba(7, 2, 25, 0.9), 0 14px 30px rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Baloo 2", cursive;
+            font-size: 1.4rem;
+            color: #3b1030;
+        }
+
+        .logo-title {
+            font-family: "Baloo 2", cursive;
+            font-size: 1.2rem;
+            line-height: 1.1;
+        }
+
+        .logo-sub {
+            font-size: 0.76rem;
+            color: var(--muted);
+        }
+
+        .badge-soft {
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(18, 5, 52, 0.9);
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+            gap: 2rem;
+        }
+
+        /* HERO */
+        .hero {
+            border-radius: 1.8rem;
+            padding: 1.7rem 1.5rem;
+            background: linear-gradient(
+                    135deg,
+                    rgba(255, 255, 255, 0.03),
+                    rgba(178, 125, 255, 0.12)
+                ),
+                var(--glass);
+            border: 1px solid var(--border);
+            box-shadow: 0 26px 60px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(18px);
+        }
+
+        .hero-kicker {
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title {
+            font-family: "Baloo 2", cursive;
+            font-size: clamp(1.7rem, 3vw, 2.2rem);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(120deg, #ffd45a, #ff9d73, #7cc7ff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-sub {
+            font-size: 0.9rem;
+            color: var(--muted);
+            max-width: 360px;
+        }
+
+        .hero-actions {
+            margin: 1.1rem 0 0.7rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .btn-main {
+            border-radius: 999px;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(135deg, #ffd45a, #ff9d73);
+            font-size: 0.9rem;
+            font-weight: 700;
+            font-family: "Baloo 2", cursive;
+            color: #4a1f29;
+            cursor: pointer;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+            transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.05);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+        }
+
+        .btn-ghost {
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            padding: 0.55rem 1.3rem;
+            background: rgba(10, 5, 45, 0.9);
+            font-size: 0.85rem;
+            color: var(--muted);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            transition: all 0.12s ease;
+        }
+
+        .btn-ghost::before {
+            content: "☀️";
+            font-size: 0.95rem;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--accent-mix);
+            color: var(--text);
+            background: rgba(26, 8, 74, 0.95);
+            transform: translateY(-1px);
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(12, 5, 38, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--muted);
+        }
+
+        /* LADO DIREITO – PERSONAGENS */
+        .hero-characters {
+            border-radius: 1.8rem;
+            padding: 1.4rem 1.3rem;
+            background: linear-gradient(
+                    145deg,
+                    rgba(124, 199, 255, 0.14),
+                    rgba(255, 212, 90, 0.08)
+                ),
+                var(--glass-strong);
+            border: 1px solid var(--border);
+            box-shadow: 0 24px 55px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(18px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-characters::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 212, 90, 0.28), transparent 55%),
+                radial-gradient(circle at 80% 30%, rgba(124, 199, 255, 0.3), transparent 60%);
+            mix-blend-mode: screen;
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        .hero-characters-inner {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .hero-characters img {
+            width: 170px;
+            max-width: 100%;
+            border-radius: 1.5rem;
+            display: block;
+        }
+
+        .hero-characters-text {
+            font-size: 0.83rem;
+            color: var(--muted);
+        }
+
+        .hero-characters-title {
+            font-family: "Baloo 2", cursive;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.4rem;
+        }
+
+        .chip-day {
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(255, 212, 90, 0.12);
+            border: 1px solid rgba(255, 212, 90, 0.55);
+            font-size: 0.73rem;
+            color: #ffeaa0;
+        }
+
+        .chip-night {
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(124, 199, 255, 0.12);
+            border: 1px solid rgba(124, 199, 255, 0.55);
+            font-size: 0.73rem;
+            color: #d7f0ff;
+        }
+
+        /* CATALOGO */
+        .section-header {
+            margin: 2.4rem 0 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+
+        .section-header h2 {
+            font-family: "Baloo 2", cursive;
+            font-size: 1.25rem;
+        }
+
+        .section-header p {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .filter-btn {
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(11, 4, 38, 0.9);
+            font-size: 0.75rem;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.12s ease;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #ffd45a, #7cc7ff);
+            color: #381228;
+            border-color: transparent;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1rem;
+        }
+
+        .card {
+            border-radius: 1.4rem;
+            padding: 1rem;
+            background: rgba(20, 7, 63, 0.82);
+            border: 1px solid var(--border);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(14px);
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            min-height: 180px;
+        }
+
+        .card-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+        }
+
+        .card-pill {
+            padding: 0.2rem 0.7rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .card-cat {
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
+
+        .card-title {
+            font-family: "Baloo 2", cursive;
+            font-size: 0.96rem;
+        }
+
+        .card-desc {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        .card-bottom-row {
+            margin-top: 0.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .price {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .price small {
+            font-size: 0.7rem;
+            color: var(--muted);
+            font-weight: 400;
+            margin-left: 0.2rem;
+        }
+
+        .btn-card {
+            border-radius: 999px;
+            border: none;
+            padding: 0.45rem 1.1rem;
+            background: linear-gradient(135deg, #ffd45a, #ff9d73);
+            font-size: 0.78rem;
+            font-weight: 700;
+            font-family: "Baloo 2", cursive;
+            color: #4a1f29;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+            transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+        }
+
+        .btn-card:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.03);
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.75);
+        }
+
+        /* FAQ ENXUTO */
+        #faq {
+            margin-top: 2.4rem;
+        }
+
+        #faq .grid {
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        }
+
+        #faq .card {
+            min-height: 0;
+        }
+
+        footer {
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        footer a {
+            color: #ffd45a;
+            text-decoration: none;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 840px) {
+            main {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .hero-characters {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filter-group {
+                justify-content: flex-start;
+            }
+
+            .page {
+                padding-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Formas geométricas -->
+    <div class="shape circle1"></div>
+    <div class="shape circle2"></div>
+    <div class="shape circle3"></div>
+    <div class="shape square"></div>
+
+    <div class="page">
+        <header>
+            <div class="logo">
+                <div class="logo-badge">7</div>
+                <div>
+                    <div class="logo-title">seven.seven</div>
+                    <div class="logo-sub">E-books rápidos para o seu dia & noite</div>
+                </div>
+            </div>
+            <span class="badge-soft">Pix, cartão e boleto via Kiwify</span>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-kicker">Coleção digital</div>
+                <h1 class="hero-title">
+                    E-books fofos, práticos e <span>direto ao ponto</span>.
+                </h1>
+                <p class="hero-sub">
+                    Escolha uma categoria, veja o valor na hora e baixe assim que o pagamento for aprovado.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="btn-main" onclick="scrollToSection('catalogo')">
+                        Ver e-books agora
+                    </button>
+                    <button class="btn-ghost" onclick="scrollToSection('faq')">
+                        Como funciona
+                    </button>
+                </div>
+
+                <div class="hero-tags">
+                    <span class="tag">Leitura rápida</span>
+                    <span class="tag">PDF no celular</span>
+                    <span class="tag">Sem enrolação</span>
+                </div>
+            </section>
+
+            <section class="hero-characters">
+                <div class="hero-characters-inner">
+                    <!-- Troque o src pelo caminho da sua imagem no repositório -->
+                    <img src="assets/img/characters.png" alt="Personagens sol e lua seven.seven" />
+                    <div class="hero-characters-text">
+                        <div class="hero-characters-title">Dia & noite com você</div>
+                        <p>
+                            Seus novos guias para estudar, organizar a rotina e cozinhar sem estresse.
+                        </p>
+                        <div class="hero-chips">
+                            <span class="chip-day">☀️ Sol: energia e ação</span>
+                            <span class="chip-night">🌙 Lua: calma e foco</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- CATALOGO -->
+        <section id="catalogo">
+            <div class="section-header">
+                <div>
+                    <h2>Catálogo por categoria</h2>
+                    <p>Passeie pelas categorias ou veja tudo de uma vez.</p>
+                </div>
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="informatica">Informática</button>
+                    <button class="filter-btn" data-filter="financas">Finanças</button>
+                    <button class="filter-btn" data-filter="culinaria">Culinária</button>
+                    <button class="filter-btn" data-filter="desenvolvimento">Desenvolvimento</button>
+                </div>
+            </div>
+
+            <div class="grid">
+                <!-- INFORMÁTICA -->
+                <article class="card" data-category="informatica">
+                    <div class="card-top-row">
+                        <span class="card-pill">Informática básica</span>
+                        <span class="card-cat">Computador & internet</span>
+                    </div>
+                    <h3 class="card-title">Informática Essencial</h3>
+                    <p class="card-desc">
+                        Atalhos, organização e segurança para o dia a dia.
+                    </p>
+                    <div class="card-bottom-row">
+                        <div class="price">R$ 14,90 <small>PDF rápido</small></div>
+                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_INFORMATICA')">
+                            Quero esse
+                        </button>
+                    </div>
+                </article>
+
+                <article class="card" data-category="informatica">
+                    <div class="card-top-row">
+                        <span class="card-pill">Excel</span>
+                        <span class="card-cat">Planilhas simples</span>
+                    </div>
+                    <h3 class="card-title">Excel Descomplicado</h3>
+                    <p class="card-desc">
+                        Fórmulas básicas e exemplos prontos para usar.
+                    </p>
+                    <div class="card-bottom-row">
+                        <div class="price">R$ 19,90 <small>+ modelos</small></div>
+                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_EXCEL')">
+                            Ver detalhes
+                        </button>
+                    </div>
+                </article>
+
+                <!-- FINANÇAS -->
+                <article class="card" data-category="financas">
+                    <div class="card-top-row">
+                        <span class="card-pill">Finanças</span>
+                        <span class="card-cat">Controle de gastos</span>
+                    </div>
+                    <h3 class="card-title">Grana Organizada</h3>
+                    <p class="card-desc">
+                        Passo a passo simples para saber para onde o dinheiro vai.
+                    </p>
+                    <div class="card-bottom-row">
+                        <div class="price">R$ 17,90</div>
+                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_FINANCAS')">
+                            Comprar
+                        </button>
+                    </div>
+                </article>
+
+                <article class="card" data-category="financas">
+                    <div class="card-top-row">
+                        <span class="card-pill">Renda extra</span>
+                        <span class="card-cat">Internet</span>
+                    </div>
+                    <h3 class="card-title">Primeiros Passos Online</h3>
+                    <p class="card-desc">
+                        Ideias reais de renda pela internet para começar pequeno.
+                    </p>
+                    <div class="card-bottom-row">
+                        <div class="price">R$ 24,90</div>
+                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_RENDA')">
+                            Ver e-book
+                        </button>
+                    </div>
+                </article>
+
+                <!-- CULINÁRIA -->
+                <article class="card" data-category="culinaria">
+                    <div class="card-top-row">
+                        <span class="card-pill">Culinária</span>
+                        <span class="card-cat">Bolos & doces</span>
+                    </div>
+                    <h3 class="card-title">Bolos Caseiros Fáceis</h3>
+                    <p class="card-desc">
+                        Receitas simples, molhadinhas e perfeitas para vender.
+                    </p>
+                    <div class="card-bottom-row">
+                        <div class="price">R$ 12,90</div>
+                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_BOLOS')">
+                            Quero as receitas
+                        </button>
+                    </div>
+                </article>
+
+                <article class="card" data-category="culinaria">
+                    <div class="card-top-row">
+                        <span class="card-pill">Jantar rápido</span>
+                        <span class="card-cat">Refeições</span>
+                    </div>
+                    <h3 class="card-title">Janta em 20 Minutos</h3>
+                    <p class="card-desc">
+                        Ideias de refeições rápidas para a correria.
+                    </p>
+                    <div class="card-bottom-row">
+                        <div class="price">R$ 14,90</div>
+                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_JANTA')">
+                            Ver receitas
+                        </button>
+                    </div>
+                </article>
+
+                <!-- DESENVOLVIMENTO -->
+                <article class="card" data-category="desenvolvimento">
+                    <div class="card-top-row">
+                        <span class="card-pill">Rotina</span>
+                        <span class="card-cat">Foco & organização</span>
+                    </div>
+                    <h3 class="card-title">Rotina de Foco</h3>
+                    <p class="card-desc">
+                        Um plano simples para diminuir distrações e organizar o dia.
+                    </p>
+                    <div class="card-bottom-row">
+                        <div class="price">R$ 16,90</div>
+                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_FOCO')">
+                            Começar hoje
+                        </button>
+                    </div>
+                </article>
+
+                <article class="card" data-category="desenvolvimento">
+                    <div class="card-top-row">
+                        <span class="card-pill">Estudos</span>
+                        <span class="card-cat">Concursos</span>
+                    </div>
+                    <h3 class="card-title">Estudo Simples para Concursos</h3>
+                    <p class="card-desc">
+                        Organização de revisão e questões para quem tem pouco tempo.
+                    </p>
+                    <div class="card-bottom-row">
+                        <div class="price">R$ 19,90</div>
+                        <button class="btn-card" onclick="openKiwify('LINK_KIWIFY_CONCURSO')">
+                            Ver detalhes
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- FAQ ENXUTO -->
+        <section id="faq">
+            <div class="section-header">
+                <div>
+                    <h2>Dúvidas rápidas</h2>
+                    <p>Três coisas que você precisa saber antes de comprar.</p>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">Como recebo?</h3>
+                    <p class="card-desc">
+                        Depois do pagamento, a Kiwify libera o acesso e envia o link por e-mail.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Funciona no celular?</h3>
+                    <p class="card-desc">
+                        Sim! Todos são PDFs, é só abrir no leitor de PDF do seu aparelho.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Quais formas de pagamento?</h3>
+                    <p class="card-desc">
+                        Pix, cartão de crédito e boleto, tudo processado pela Kiwify.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <span>© <span id="year"></span> seven.seven • dia & noite com você.</span>
+            <a href="#" id="copyLink">copiar link da página</a>
+        </footer>
+    </div>
+
+    <script>
+        // ano no rodapé
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            window.scrollTo({
+                top: el.offsetTop - 20,
+                behavior: "smooth"
+            });
+        }
+
+        // abrir link da Kiwify
+        function openKiwify(url) {
+            if (!url || url.startsWith("LINK_KIWIFY")) {
+                alert("Defina o link da Kiwify para este e-book.");
+                return;
+            }
+            window.open(url, "_blank");
+        }
+
+        // filtros
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const cards = document.querySelectorAll(".card[data-category]");
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const filter = btn.getAttribute("data-filter");
+                filterButtons.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+
+                cards.forEach(card => {
+                    const cat = card.getAttribute("data-category");
+                    card.style.display = (filter === "all" || filter === cat) ? "flex" : "none";
+                });
+            });
+        });
+
+        // copiar link da página
+        const copyLinkBtn = document.getElementById("copyLink");
+        copyLinkBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const url = window.location.href;
+            if (navigator.clipboard?.writeText) {
+                navigator.clipboard.writeText(url).then(() => {
+                    copyLinkBtn.textContent = "link copiado!";
+                    setTimeout(() => copyLinkBtn.textContent = "copiar link da página", 2000);
+                });
+            } else {
+                prompt("Copie o link:", url);
+            }
+        });
+    </script>
+</body>
+</html>
